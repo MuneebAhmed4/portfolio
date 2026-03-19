@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muneeb Ahmed — Software Engineer & AI Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2eb;
+    --accent: #c8f04a;
+    --accent2: #4af0c8;
+    --mid: #1a1a1a;
+    --border: rgba(245,242,235,0.12);
+    --muted: rgba(245,242,235,0.45);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.35;
+  }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); background: rgba(10,10,10,0.7); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--accent); color: var(--black); padding: 0.55rem 1.4rem; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.875rem; font-family: 'Syne', sans-serif; transition: transform 0.2s, background 0.2s; }
+  .nav-cta:hover { transform: translateY(-2px); background: #d4f55a; }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: grid; place-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(200,240,74,0.12) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; animation: pulse 6s ease-in-out infinite; }
+  .hero-glow2 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(74,240,200,0.08) 0%, transparent 70%); bottom: -100px; left: -100px; pointer-events: none; animation: pulse 8s ease-in-out infinite reverse; }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.1);opacity:0.7} }
+  .hero-inner { max-width: 1100px; width: 100%; position: relative; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,240,74,0.1); border: 1px solid rgba(200,240,74,0.25); color: var(--accent); padding: 0.35rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-title .line2 { color: var(--accent); display: block; }
+  .hero-sub { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--muted); max-width: 640px; margin-bottom: 3rem; font-weight: 300; line-height: 1.7; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { background: var(--accent); color: var(--black); padding: 0.9rem 2.2rem; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 1rem; font-family: 'Syne', sans-serif; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(200,240,74,0.3); }
+  .btn-secondary { background: transparent; color: var(--white); padding: 0.9rem 2.2rem; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 1rem; border: 1px solid var(--border); transition: border-color 0.2s, background 0.2s; }
+  .btn-secondary:hover { border-color: rgba(245,242,235,0.4); background: rgba(245,242,235,0.05); }
+  .hero-stats { display: flex; gap: 3.5rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); animation: fadeUp 0.6s 0.4s ease both; flex-wrap: wrap; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--accent); display: block; }
+  .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.1; }
+  .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; margin-bottom: 3.5rem; }
+  .max-w { max-width: 1100px; margin: 0 auto; }
+
+  /* SERVICES */
+  #services { background: var(--mid); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .service-card { background: var(--mid); padding: 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #1e1e1e; }
+  .service-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; color: var(--accent); }
+  .service-icon svg { width: 100%; height: 100%; }
+  .service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .service-price { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-family: 'Syne', sans-serif; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+
+  /* PROJECTS */
+  #projects { background: var(--black); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--mid); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+  .project-card:hover { transform: translateY(-6px); border-color: rgba(200,240,74,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
+  .project-num { font-family: 'Syne', sans-serif; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 100px; background: rgba(245,242,235,0.07); color: var(--muted); font-weight: 500; }
+  .tag.highlight { background: rgba(200,240,74,0.12); color: var(--accent); }
+  .project-card h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.3; }
+  .project-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+  .project-metrics { display: flex; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .metric { font-family: 'Syne', sans-serif; }
+  .metric-val { font-size: 1.25rem; font-weight: 700; color: var(--accent2); display: block; }
+  .metric-label { font-size: 0.7rem; color: var(--muted); }
+
+  /* STACK */
+  #stack { background: var(--mid); }
+  .stack-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+  .stack-group h4 { font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; font-weight: 600; }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill { padding: 0.4rem 1rem; border-radius: 100px; border: 1px solid var(--border); font-size: 0.83rem; color: var(--white); font-weight: 400; transition: border-color 0.2s, background 0.2s; background: rgba(245,242,235,0.03); cursor: default; }
+  .pill:hover { border-color: var(--accent); background: rgba(200,240,74,0.07); color: var(--accent); }
+
+  /* WHY */
+  #why { background: var(--black); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .why-card { border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; background: rgba(245,242,235,0.02); transition: border-color 0.3s; }
+  .why-card:hover { border-color: rgba(74,240,200,0.3); }
+  .why-icon { width: 36px; height: 36px; margin-bottom: 1.25rem; color: var(--accent2); }
+  .why-icon svg { width: 100%; height: 100%; }
+  .why-card h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .why-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+  /* CONTACT */
+  #contact { background: var(--mid); text-align: center; position: relative; overflow: hidden; }
+  #contact::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(200,240,74,0.06) 0%, transparent 70%); pointer-events: none; }
+  .contact-inner { max-width: 680px; margin: 0 auto; position: relative; }
+  .contact-inner .section-label { justify-content: center; }
+  .contact-inner .section-label::after { display: none; }
+  .big-email { font-family: 'Syne', sans-serif; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 700; color: var(--accent); margin: 2rem 0; text-decoration: none; display: block; transition: opacity 0.2s; word-break: break-all; }
+  .big-email:hover { opacity: 0.75; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+  .contact-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.5rem; border-radius: 100px; border: 1px solid var(--border); color: var(--white); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: border-color 0.2s, background 0.2s; }
+  .contact-link:hover { border-color: rgba(245,242,235,0.3); background: rgba(245,242,235,0.05); }
+
+  footer { background: var(--black); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: rgba(200,240,74,0.3); border-radius: 2px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 6rem 1.5rem 3rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Muneeb<span>.</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#projects">Work</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Hire Me &rarr;</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Available for Projects</div>
+    <h1 class="hero-title">
+      I build enterprise AI agents<br>
+      <span class="line2">&amp; LLM-powered apps.</span>
+    </h1>
+    <p class="hero-sub">
+      Building <strong>AI agents</strong> and <strong>LLM-powered applications</strong> that automate complex business workflows for large organisations — from intelligent document systems to end-to-end recruitment and HR pipelines.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">See What I Offer</a>
+      <a href="#projects" class="btn-secondary">View My Work</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">4+</span><div class="stat-label">Years Building</div></div>
+      <div><span class="stat-num">10+</span><div class="stat-label">Projects Shipped</div></div>
+      <div><span class="stat-num">400ms</span><div class="stat-label">Avg API Latency</div></div>
+      <div><span class="stat-num">30%</span><div class="stat-label">Coherence Gain (RAG)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="max-w">
+    <div class="section-label reveal">What I Deliver</div>
+    <h2 class="section-title reveal">Services built for growth</h2>
+    <p class="section-sub reveal">Every engagement is scoped to deliver measurable output — not hours billed.</p>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Backend API Development</h3>
+        <p>Production-grade REST and webhook APIs in FastAPI or NestJS. Async-first, documented, and ready to scale from day one.</p>
+        <div class="service-price">Python &middot; FastAPI &middot; NestJS &middot; MySQL</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 1 8 8c0 5-8 13-8 13S4 15 4 10a8 8 0 0 1 8-8z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>AI Chatbots &amp; Agents</h3>
+        <p>Custom LLM-powered agents wired to your databases, APIs, and business logic. From customer-facing bots to internal copilots.</p>
+        <div class="service-price">LangChain &middot; OpenAI &middot; Claude &middot; LangGraph</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <h3>RAG &amp; Knowledge Systems</h3>
+        <p>Upload your documents, query them in plain English. Full-stack semantic search with sub-second response and streaming output.</p>
+        <div class="service-price">Mistral Embed &middot; Supabase &middot; Docling</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Workflow Automation</h3>
+        <p>Eliminate repetitive manual tasks — email triage, order confirmations, CRM syncs. I connect your tools and automate the boring stuff.</p>
+        <div class="service-price">WhatsApp API &middot; IMAP &middot; Webhooks &middot; Cron</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>System Integration &amp; ERP</h3>
+        <p>RBAC, multi-system API gateways, ERP sync — built at scale. Your platforms will finally talk to each other seamlessly.</p>
+        <div class="service-price">REST &middot; Webhooks &middot; Prisma &middot; MySQL</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Analytics Dashboards</h3>
+        <p>Data you can act on: funnel tracking, revenue by segment, team performance — all in a clean React interface.</p>
+        <div class="service-price">React &middot; Next.js &middot; REST APIs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="max-w">
+    <div class="section-label reveal">Proof of Work</div>
+    <h2 class="section-title reveal">Selected projects</h2>
+    <p class="section-sub reveal">Real systems built for real businesses.</p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <div class="project-tags"><span class="tag highlight">AI</span><span class="tag">Automation</span></div>
+        </div>
+        <h3>HR Automation — Recruiting to Hiring</h3>
+        <p>End-to-end HR pipeline automating the full recruitment lifecycle — job posting, AI-powered CV screening, candidate ranking, interview scheduling, offer generation, and onboarding triggers. Eliminates manual bottlenecks across the entire hiring funnel.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">Full-cycle</span><span class="metric-label">Recruit to hire</span></div>
+          <div class="metric"><span class="metric-val">AI</span><span class="metric-label">CV screening</span></div>
+          <div class="metric"><span class="metric-val">0-touch</span><span class="metric-label">Automated flow</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <div class="project-tags"><span class="tag highlight">AI</span><span class="tag">Full-Stack</span></div>
+        </div>
+        <h3>Enterprise CRM</h3>
+        <p>Centralized CRM managing social media, call center, and campus leads with RBAC synced to an ERP. Multi-level assignment workflows and analytics for 100+ operational users.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">RBAC</span><span class="metric-label">Role-based access</span></div>
+          <div class="metric"><span class="metric-val">ERP Sync</span><span class="metric-label">Via secure API</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <div class="project-tags"><span class="tag highlight">RAG</span><span class="tag">AI</span></div>
+        </div>
+        <h3>Chat With Your Documents</h3>
+        <p>Full-stack RAG system — users upload PDFs or Word files and query them instantly. LLM-guided chunking, 768-D Mistral embeddings, and a streaming React UI.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">400ms</span><span class="metric-label">Avg latency</span></div>
+          <div class="metric"><span class="metric-val">+30%</span><span class="metric-label">Chunk coherence</span></div>
+          <div class="metric"><span class="metric-val">+25%</span><span class="metric-label">Engagement lift</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <div class="project-tags"><span class="tag highlight">Automation</span></div>
+        </div>
+        <h3>Email Summarization Agent</h3>
+        <p>Python automation agent that fetches unread emails via IMAP, classifies by importance using NLP, summarizes with OpenAI, and delivers daily digests via WhatsApp — zero manual effort.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">Daily</span><span class="metric-label">Scheduled runs</span></div>
+          <div class="metric"><span class="metric-val">NLP</span><span class="metric-label">Priority filter</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">05</span>
+          <div class="project-tags"><span class="tag highlight">WhatsApp</span><span class="tag">Ecommerce</span></div>
+        </div>
+        <h3>WhatsApp Order Confirmation Agent</h3>
+        <p>Instant order confirmations via WhatsApp Business Cloud API the moment a customer checks out. FastAPI webhooks handle verification and event dispatch with approved message templates.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">Real-time</span><span class="metric-label">Checkout trigger</span></div>
+          <div class="metric"><span class="metric-val">0-touch</span><span class="metric-label">Fully automated</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">06</span>
+          <div class="project-tags"><span class="tag highlight">Full-Stack</span></div>
+        </div>
+        <h3>Internal Transport System</h3>
+        <p>Vehicle-request workflow system: secure login, multi-level approval chain, auto-email confirmations with driver details, and ERP integration via API gateway.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">3-tier</span><span class="metric-label">Approval flow</span></div>
+          <div class="metric"><span class="metric-val">ERP</span><span class="metric-label">Integrated</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">07</span>
+          <div class="project-tags"><span class="tag highlight">Mobile</span><span class="tag">Firebase</span></div>
+        </div>
+        <h3>Blood Donation App</h3>
+        <p>Android app connecting thalassemia patients with blood donors. Built with Kotlin + Compose UI, Firebase real-time database, and MySQL sync with blood donation centers.</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">Firebase</span><span class="metric-label">Real-time sync</span></div>
+          <div class="metric"><span class="metric-val">Kotlin</span><span class="metric-label">Compose UI</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="max-w">
+    <div class="section-label reveal">Toolbox</div>
+    <h2 class="section-title reveal">My tech stack</h2>
+    <p class="section-sub reveal">Tools I reach for when shipping production software.</p>
+    <div class="stack-groups reveal">
+      <div class="stack-group">
+        <h4>Languages</h4>
+        <div class="stack-pills">
+          <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Kotlin</span><span class="pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Backend</h4>
+        <div class="stack-pills">
+          <span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">NestJS</span><span class="pill">Prisma</span><span class="pill">MySQL</span><span class="pill">Supabase</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>AI / ML</h4>
+        <div class="stack-pills">
+          <span class="pill">LangChain</span><span class="pill">LangGraph</span><span class="pill">OpenAI</span><span class="pill">Mistral</span><span class="pill">Docling</span><span class="pill">NLP</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Frontend</h4>
+        <div class="stack-pills">
+          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Compose UI</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Integrations</h4>
+        <div class="stack-pills">
+          <span class="pill">WhatsApp API</span><span class="pill">Meta Graph API</span><span class="pill">Twilio</span><span class="pill">IMAP</span><span class="pill">Firebase</span><span class="pill">Webhooks</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Patterns</h4>
+        <div class="stack-pills">
+          <span class="pill">RAG Pipelines</span><span class="pill">API Design</span><span class="pill">RBAC</span><span class="pill">Async</span><span class="pill">Caching</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="max-w">
+    <div class="section-label reveal">Why Work With Me</div>
+    <h2 class="section-title reveal">I ship, not just build</h2>
+    <p class="section-sub reveal">The difference between a developer and a partner.</p>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Outcome-focused</h3>
+        <p>I measure my work by what it changes — latency, engagement, hours saved. Every project starts with a clear definition of what "done" looks like.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Production-ready by default</h3>
+        <p>I don't build POCs that fall apart in prod. Async patterns, caching, error handling — baked in from the start, not bolted on later.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>Integration specialist</h3>
+        <p>I've connected ERPs, CRMs, WhatsApp, email, databases, and custom APIs into unified systems. Your tools will finally talk to each other.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h3>AI-native engineer</h3>
+        <p>Not just an LLM wrapper dev — I build agentic systems, RAG pipelines, and fine-tuned models that genuinely solve business problems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's build something that matters.</h2>
+    <p style="color:var(--muted);margin-top:1rem;font-size:1rem;line-height:1.7;">Have a project in mind? I'm available for freelance work, consulting, and full-time roles. Let's talk scope and timeline.</p>
+    <a href="mailto:muneebahmed0032@gmail.com" class="big-email">muneebahmed0032@gmail.com</a>
+    <a href="mailto:muneebahmed0032@gmail.com" class="btn-primary" style="margin-bottom:2rem;">Send Me a Message &rarr;</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/muneeb-ahmed-844249276/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B3orM7Y5aQJWez%2BeZTJDVdQ%3D%3D" class="contact-link" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:03097176432" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +92 309 7176432
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>&copy; 2025 Muneeb Ahmed. All rights reserved.</div>
+  <div style="color:var(--muted);">Lahore, Pakistan &middot; Available Globally</div>
+</footer>
+
+<script>
+  // Robust reveal: show items already in viewport immediately, observe the rest
+  function initReveal() {
+    var items = document.querySelectorAll('.reveal');
+
+    if (!items.length) return;
+
+    // Fallback: if IntersectionObserver not available, show everything
+    if (!window.IntersectionObserver) {
+      items.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+
+    items.forEach(function(el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 60) {
+        // Already visible on page load — show it right away
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+  }
+
+  // Run as soon as DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+  // Safety net after full page load
+  window.addEventListener('load', initReveal);
+</script>
+</body>
+</html>
