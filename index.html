@@ -359,6 +359,7 @@ footer {
 
   /* SERVICES — single column */
   .services-grid { grid-template-columns: 1fr; }
+  .services-grid .svc { grid-column: span 1 !important; }
   .svc { padding: 1.8rem; }
 
   /* PROJECTS — single column */
@@ -505,7 +506,7 @@ footer {
         <p>Integrating AI chatbots and LLM assistants into LMS platforms and educational institute websites — student support, course guidance, and admin automation.</p>
         <div class="svc-stack">LangChain · OpenAI · LMS APIs · Webhooks · React</div>
       </div>
-      <div class="svc">
+      <div class="svc" style="grid-column: span 3;">
         <div class="svc-num">07</div>
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <h3>Analytics Dashboards</h3>
